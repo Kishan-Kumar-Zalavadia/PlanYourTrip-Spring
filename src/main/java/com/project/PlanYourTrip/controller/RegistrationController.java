@@ -72,4 +72,16 @@ public class RegistrationController {
 		return updateUser;
 	}
 	
+	
+	@PutMapping("updateUser/{id}")
+	@CrossOrigin(origins = "http://localhost:4200")
+	public User updateHotel(@PathVariable int id, @RequestBody User user) {
+		User updateUser = service.getUserById(id);
+		updateUser.setEmailId(user.getEmailId());
+		updateUser.setUserName(user.getUserName());
+		updateUser.setPassword(user.getPassword());
+		service.saveUser(updateUser);
+		return updateUser;
+	}
+	
 }	
